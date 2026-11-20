@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="アロマ成分帳は、精油を「成分」と「安全条件」から引ける辞典アプリです。iPhone・iPad対応。">
+  <meta property="og:title" content="アロマ成分帳 — 香りを知る。暮らしに広がる。">
+  <meta property="og:description" content="精油を「成分」と「安全条件」から引ける辞典アプリ。">
+  <meta property="og:image" content="https://cyoro01-wq.github.io/aroma-dictionary-support/media/poster.jpg">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="media/icon.png">
+  <title>アロマ成分帳 — 香りを知る。暮らしに広がる。</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #fbf6ef; --bg2: #f4ece2; --card: #fffdf9; --line: #ebe0d4;
+      --ink: #3b2f33; --muted: #75666b; --rose: #9e5468; --sage: #6f8467; --lav: #8576a6;
+      --shadow: 0 18px 40px -22px rgba(80, 55, 40, .45);
+      --serif: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Noto Serif JP", serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #171315; --bg2: #1e191b; --card: #241e21; --line: #352c30; --ink: #f3ecee; --muted: #b8abaf; --rose: #e4a3b2; --sage: #a9bf9f; --lav: #c0b2e0; --shadow: 0 18px 40px -22px rgba(0,0,0,.8); }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); line-height: 1.9; overflow-x: hidden; }
+    a { color: var(--rose); }
+    img, video { display: block; max-width: 100%; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+
+    /* hero */
+    .hero { position: relative; padding: 56px 0 72px; overflow: hidden;
+      background:
+        radial-gradient(520px 380px at 12% 8%, color-mix(in srgb, var(--lav) 22%, transparent), transparent 70%),
+        radial-gradient(560px 420px at 92% 30%, color-mix(in srgb, var(--sage) 22%, transparent), transparent 70%),
+        radial-gradient(480px 360px at 50% 110%, color-mix(in srgb, var(--rose) 16%, transparent), transparent 70%),
+        var(--bg); }
+    .hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+    .brand { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+    .brand img { width: 64px; height: 64px; border-radius: 15px; box-shadow: var(--shadow); }
+    .brand span { font-family: var(--serif); font-size: 1.35rem; letter-spacing: .08em; }
+    .nw { display: inline-block; white-space: nowrap; }
+    .badge .nw + .nw { margin-left: .6em; }
+    h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.75rem, 7.6vw, 3.4rem); line-height: 1.45; letter-spacing: .08em; margin: 0 0 22px; }
+    .lead { font-size: 1.05rem; color: var(--muted); max-width: 30em; }
+    .badge { display: inline-block; margin-top: 22px; padding: 10px 20px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); font-size: .92rem; color: var(--muted); box-shadow: var(--shadow); }
+    .badge b { color: var(--sage); font-weight: 600; }
+    .video { justify-self: center; width: min(320px, 78vw); aspect-ratio: 9 / 16; border-radius: 34px; padding: 9px; background: #2a2224; box-shadow: 0 40px 70px -30px rgba(60, 40, 30, .6); }
+    .video video { width: 100%; height: 100%; object-fit: cover; border-radius: 26px; background: #000; }
+    .caption { text-align: center; font-size: .78rem; color: var(--muted); margin-top: 14px; }
+
+    /* sprig divider */
+    .sprig { display: flex; justify-content: center; margin: 8px 0 0; color: var(--sage); opacity: .8; }
+
+    section { padding: 72px 0; }
+    .eyebrow { font-size: .78rem; letter-spacing: .3em; color: var(--sage); text-transform: uppercase; text-align: center; margin: 0; }
+    h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.5rem, 3.4vw, 2.1rem); letter-spacing: .08em; text-align: center; margin: 6px 0 14px; }
+    .sub { text-align: center; color: var(--muted); max-width: 34em; margin: 0 auto 44px; }
+
+    /* features */
+    .feature { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; max-width: 880px; margin: 0 auto 64px; }
+    .feature:nth-of-type(even) .shot { order: 2; }
+    .shot { justify-self: center; width: min(250px, 66vw); border-radius: 30px; padding: 7px; background: #2a2224; box-shadow: var(--shadow); }
+    .shot img { border-radius: 24px; }
+    .feature h3 { font-family: var(--serif); font-weight: 600; font-size: 1.35rem; letter-spacing: .06em; margin: 0 0 10px; }
+    .feature .num { font-family: var(--serif); color: var(--rose); font-size: .95rem; letter-spacing: .2em; }
+    .feature p { color: var(--muted); margin: 0; }
+
+    .soft { background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 24px; }
+    .card h3 { font-family: var(--serif); font-weight: 600; font-size: 1.1rem; margin: 0 0 8px; color: var(--rose); letter-spacing: .05em; }
+    .card p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+    .note { max-width: 760px; margin: 0 auto; background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--sage); border-radius: 14px; padding: 20px 24px; font-size: .92rem; color: var(--muted); }
+
+    footer { padding: 40px 0 56px; text-align: center; font-size: .85rem; color: var(--muted); }
+    footer nav { margin-bottom: 14px; }
+    footer nav a { margin: 0 10px; }
+    .credit { font-size: .75rem; opacity: .85; }
+
+    @media (max-width: 760px) {
+      .hero { padding-top: 36px; }
+      .hero .wrap, .feature { grid-template-columns: 1fr; gap: 32px; }
+      .hero .wrap > div:first-child { text-align: center; }
+      .brand { justify-content: center; }
+      .lead { margin: 0 auto; }
+      .feature, .feature:nth-of-type(even) { text-align: center; }
+      .feature:nth-of-type(even) .shot { order: 0; }
+      .cards { grid-template-columns: 1fr; }
+      section { padding: 56px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div>
+        <div class="brand"><img src="media/icon.png" alt="" width="64" height="64"><span>アロマ成分帳</span></div>
+        <h1><span class="nw">香りを知る。</span><br><span class="nw">暮らしに広がる。</span></h1>
+        <p class="lead">アロマ成分帳は、精油を「成分」と「安全条件」から引ける辞典アプリです。気になる香りの成り立ちや、使う前に知っておきたい注意を、手のひらで確かめられます。</p>
+        <p class="badge"><span class="nw">iPhone・iPad（iOS 17以降）</span> <span class="nw"><b>App Store で公開準備中</b></span></p>
+      </div>
+      <div>
+        <div class="video">
+          <video src="media/promo.mp4" poster="media/poster.jpg" controls playsinline preload="metadata" aria-label="アロマ成分帳の紹介動画（30秒・ナレーションつき）"></video>
+        </div>
+        <p class="caption">紹介動画（30秒・音声あり）</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="sprig" aria-hidden="true">
+    <svg width="120" height="28" viewBox="0 0 120 28" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+      <path d="M8 14h104"/>
+      <path d="M60 14c-6-8-14-10-20-9 4 6 12 9 20 9zM60 14c6-8 14-10 20-9-4 6-12 9-20 9z"/>
+      <circle cx="60" cy="14" r="2.2" fill="currentColor"/>
+    </svg>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Features</p>
+      <h2>香りを、成分からひもとく</h2>
+      <p class="sub">名前から探すだけでなく、成分や安全条件から精油を見比べられるのが、アロマ成分帳の特長です。</p>
+
+      <div class="feature">
+        <div class="shot"><img src="media/01-oils.jpg" alt="精油の一覧画面" width="600" height="1304" loading="lazy"></div>
+        <div><div class="num">01</div><h3>気になる精油を調べる</h3><p>名前・英名・学名で探せます。香りの系統やノート、植物の部位などを、ひとつの画面で確認できます。</p></div>
+      </div>
+
+      <div class="feature">
+        <div class="shot"><img src="media/03-components.jpg" alt="成分の一覧画面" width="600" height="1304" loading="lazy"></div>
+        <div><div class="num">02</div><h3>成分から、共通点を見つける</h3><p>成分ごとに、その成分を含む精油を一覧できます。ちがう精油どうしの共通点が見えてきます。</p></div>
+      </div>
+
+      <div class="feature">
+        <div class="shot"><img src="media/04-safety.jpg" alt="安全条件の画面" width="600" height="1304" loading="lazy"></div>
+        <div><div class="num">03</div><h3>使う前の注意を確かめる</h3><p>妊娠中・授乳中・乳幼児・ペットなど、避けたい条件を選ぶと、それに触れる精油が一覧から外れます。</p></div>
+      </div>
+
+      <div class="feature">
+        <div class="shot"><img src="media/05-recipes.jpg" alt="レシピの画面" width="600" height="1304" loading="lazy"></div>
+        <div><div class="num">04</div><h3>レシピと手作りの楽しみ</h3><p>ブレンドのレシピや、手作りクラフトの作り方、キャリアオイルの選び方も。持っている精油を登録すると、いま作れるレシピが分かります。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="soft">
+    <div class="wrap">
+      <p class="eyebrow">For your everyday</p>
+      <h2>毎日の香りに、そっと寄り添う</h2>
+      <p class="sub">登録も広告もなく、ひらいてすぐに使えます。</p>
+      <div class="cards">
+        <div class="card"><h3>アカウント不要</h3><p>登録やログインはありません。辞典を見るだけなら、インターネットへの接続もいりません。</p></div>
+        <div class="card"><h3>参考文献つき</h3><p>健康や安全に関わる画面から、もとにした公的機関・学術論文などの資料を確かめられます。</p></div>
+        <div class="card"><h3>無料で使える辞典</h3><p>精油・成分・安全条件・注意事項は無料。レシピの配合や作り方の詳細はプレミアム（有料）です。<a href="support.html">料金について</a></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="note">本アプリの内容は、香りの使われ方や一般的な注意をまとめた参考情報です。診断や治療の代わりにはなりません。精油は原液を肌に付けず、体調に不安がある方、妊娠中・授乳中の方、持病や服薬のある方、お子さまへの使用は、専門家にご相談ください。</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <nav><a href="support.html">サポート</a><a href="privacy.html">プライバシーポリシー</a><a href="index.html">トップ</a></nav>
+      <p>アロマ成分帳</p>
+      <p class="credit">紹介動画の人物・風景は AI で生成したイメージです。ナレーション：VOICEVOX:もち子(cv 明日葉よもぎ)</p>
+    </div>
+  </footer>
+</body>
+</html>
