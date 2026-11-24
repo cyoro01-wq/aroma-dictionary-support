@@ -50,6 +50,41 @@
     .video video { width: 100%; height: 100%; object-fit: cover; border-radius: 26px; background: #000; }
     .caption { text-align: center; font-size: .78rem; color: var(--muted); margin-top: 14px; }
 
+
+    /* botanical-start: 植物の飾り */
+    .bot { position: absolute; z-index: 0; pointer-events: none; user-select: none; opacity: var(--o, .9);
+      transform: rotate(var(--r, 0deg)); animation: sway var(--d, 10s) ease-in-out infinite; transform-origin: 50% 90%; }
+    .bot img { width: 100%; height: auto; filter: drop-shadow(0 14px 18px rgba(70, 50, 40, .16)); }
+    @keyframes sway { 0%, 100% { transform: rotate(var(--r, 0deg)) translateY(0); } 50% { transform: rotate(calc(var(--r, 0deg) + 2.6deg)) translateY(-9px); } }
+    .hero .wrap, .soft .wrap, footer .wrap { position: relative; z-index: 1; }
+    .soft, footer { position: relative; overflow: hidden; }
+
+    .garden { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; max-width: 980px; margin: 0 auto; }
+    .plant { background: color-mix(in srgb, var(--card) 88%, transparent); backdrop-filter: blur(6px); border: 1px solid var(--line);
+      border-radius: 24px; padding: 18px 14px 20px; text-align: center; transition: transform .4s ease, box-shadow .4s ease; }
+    .plant:hover { transform: translateY(-7px); box-shadow: var(--shadow); }
+    .plant .art { aspect-ratio: 1; display: grid; place-items: center; margin-bottom: 10px; }
+    .plant .art img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; transition: transform .6s ease; }
+    .plant:hover .art img { transform: scale(1.06) rotate(-1.5deg); }
+    .plant h3 { font-family: var(--serif); font-weight: 600; font-size: 1.02rem; letter-spacing: .05em; margin: 0; }
+    .plant .latin { font-style: italic; font-size: .76rem; color: var(--muted); margin: 2px 0 8px; line-height: 1.5; }
+    .plant .comp { font-size: .8rem; color: var(--sage); line-height: 1.6; }
+    .plant .comp b { font-weight: 600; letter-spacing: .12em; font-size: .68rem; display: block; color: var(--muted); }
+    .garden-note { text-align: center; color: var(--muted); font-size: .85rem; margin: 26px auto 0; max-width: 34em; }
+
+    .js .reveal { opacity: 0; transform: translateY(26px); transition: opacity .9s ease, transform .9s ease; }
+    .js .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .bot { animation: none; }
+      .js .reveal { opacity: 1; transform: none; transition: none; }
+      .plant, .plant .art img { transition: none; }
+    }
+    @media (max-width: 760px) {
+      .garden { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .bot { opacity: calc(var(--o, .9) * .7); }
+    }
+    /* botanical-end */
+
     /* sprig divider */
     .sprig { display: flex; justify-content: center; margin: 8px 0 0; color: var(--sage); opacity: .8; }
 
@@ -95,6 +130,9 @@
 </head>
 <body>
   <header class="hero">
+<div class="bot" aria-hidden="true" style="width:min(300px,34vw);right:-70px;top:-46px;--r:14deg;--d:11s;--o:.85"><picture><source media="(prefers-color-scheme: dark)" srcset="media/botanical/eucalyptus-d.webp"><img src="media/botanical/eucalyptus.webp" alt="" width="510" height="520" loading="eager" decoding="async"></picture></div>
+<div class="bot" aria-hidden="true" style="width:min(280px,32vw);left:-64px;bottom:-62px;--r:-8deg;--d:9s;--o:.9"><picture><source media="(prefers-color-scheme: dark)" srcset="media/botanical/lavender_true-d.webp"><img src="media/botanical/lavender_true.webp" alt="" width="490" height="520" loading="eager" decoding="async"></picture></div>
+<div class="bot" aria-hidden="true" style="width:min(150px,18vw);left:41%;bottom:-84px;--r:6deg;--d:12s;--o:.8"><picture><source media="(prefers-color-scheme: dark)" srcset="media/botanical/geranium-d.webp"><img src="media/botanical/geranium.webp" alt="" width="508" height="520" loading="eager" decoding="async"></picture></div>
     <div class="wrap">
       <div>
         <div class="brand"><img src="media/icon.png" alt="" width="64" height="64"><span>アロマ成分帳</span></div>
@@ -147,7 +185,68 @@
     </div>
   </section>
 
+  <section id="botanical">
+    <div class="wrap">
+      <p class="eyebrow">Botanicals</p>
+      <h2><span class="nw">香りのもとは、</span><span class="nw">植物のなかに</span></h2>
+      <p class="sub">精油は、花・葉・果実・樹皮など、植物のさまざまな部位から生まれます。アプリには51種の精油が、それぞれの植物の画とともに入っています。</p>
+      <div class="garden">
+        <article class="plant reveal" style="transition-delay:0ms">
+          <div class="art"><picture><source media="(prefers-color-scheme: dark)" srcset="media/botanical/lavender_true-d.webp"><img src="media/botanical/lavender_true.webp" alt="真正ラベンダーの植物画" width="490" height="520" loading="lazy" decoding="async"></picture></div>
+          <h3>真正ラベンダー</h3>
+          <p class="latin">Lavandula angustifolia</p>
+          <p class="comp"><b>成分</b>酢酸リナリル・リナロール</p>
+        </article>
+        <article class="plant reveal" style="transition-delay:90ms">
+          <div class="art"><picture><source media="(prefers-color-scheme: dark)" srcset="media/botanical/rose_otto-d.webp"><img src="media/botanical/rose_otto.webp" alt="ローズの植物画" width="494" height="520" loading="lazy" decoding="async"></picture></div>
+          <h3>ローズ</h3>
+          <p class="latin">Rosa damascena</p>
+          <p class="comp"><b>成分</b>シトロネロール・ゲラニオール・ネロール</p>
+        </article>
+        <article class="plant reveal" style="transition-delay:180ms">
+          <div class="art"><picture><img src="media/botanical/roman_chamomile.webp" alt="カモミール・ローマンの植物画" width="520" height="466" loading="lazy" decoding="async"></picture></div>
+          <h3>カモミール・ローマン</h3>
+          <p class="latin">Chamaemelum nobile</p>
+          <p class="comp"><b>成分</b>アンゲリカ酸エステル類</p>
+        </article>
+        <article class="plant reveal" style="transition-delay:270ms">
+          <div class="art"><picture><source media="(prefers-color-scheme: dark)" srcset="media/botanical/ylang_ylang-d.webp"><img src="media/botanical/ylang_ylang.webp" alt="イランイランの植物画" width="520" height="478" loading="lazy" decoding="async"></picture></div>
+          <h3>イランイラン</h3>
+          <p class="latin">Cananga odorata</p>
+          <p class="comp"><b>成分</b>β-カリオフィレン・安息香酸メチル</p>
+        </article>
+        <article class="plant reveal" style="transition-delay:0ms">
+          <div class="art"><picture><source media="(prefers-color-scheme: dark)" srcset="media/botanical/eucalyptus-d.webp"><img src="media/botanical/eucalyptus.webp" alt="ユーカリ・グロブルスの植物画" width="510" height="520" loading="lazy" decoding="async"></picture></div>
+          <h3>ユーカリ・グロブルス</h3>
+          <p class="latin">Eucalyptus globulus</p>
+          <p class="comp"><b>成分</b>1,8-シネオール</p>
+        </article>
+        <article class="plant reveal" style="transition-delay:90ms">
+          <div class="art"><picture><source media="(prefers-color-scheme: dark)" srcset="media/botanical/juniper_berry-d.webp"><img src="media/botanical/juniper_berry.webp" alt="ジュニパーベリーの植物画" width="520" height="469" loading="lazy" decoding="async"></picture></div>
+          <h3>ジュニパーベリー</h3>
+          <p class="latin">Juniperus communis</p>
+          <p class="comp"><b>成分</b>α-ピネン・ミルセン</p>
+        </article>
+        <article class="plant reveal" style="transition-delay:180ms">
+          <div class="art"><picture><source media="(prefers-color-scheme: dark)" srcset="media/botanical/peppermint-d.webp"><img src="media/botanical/peppermint.webp" alt="ペパーミントの植物画" width="458" height="520" loading="lazy" decoding="async"></picture></div>
+          <h3>ペパーミント</h3>
+          <p class="latin">Mentha x piperita</p>
+          <p class="comp"><b>成分</b>メントール・メントン</p>
+        </article>
+        <article class="plant reveal" style="transition-delay:270ms">
+          <div class="art"><picture><source media="(prefers-color-scheme: dark)" srcset="media/botanical/rosemary-d.webp"><img src="media/botanical/rosemary.webp" alt="ローズマリー・シネオールの植物画" width="520" height="478" loading="lazy" decoding="async"></picture></div>
+          <h3>ローズマリー・シネオール</h3>
+          <p class="latin">Salvia rosmarinus</p>
+          <p class="comp"><b>成分</b>1,8-シネオール・α-ピネン</p>
+        </article>
+      </div>
+      <p class="garden-note">ここに挙げたのは、51種のうちの8種です。成分の名前は、アプリに載せているものです。</p>
+    </div>
+  </section>
+
   <section class="soft">
+<div class="bot" aria-hidden="true" style="width:min(220px,26vw);left:-60px;top:-30px;--r:-16deg;--d:12s;--o:.55"><picture><source media="(prefers-color-scheme: dark)" srcset="media/botanical/cypress-d.webp"><img src="media/botanical/cypress.webp" alt="" width="520" height="492" loading="lazy" decoding="async"></picture></div>
+<div class="bot" aria-hidden="true" style="width:min(240px,28vw);right:-70px;bottom:-40px;--r:18deg;--d:10s;--o:.55"><picture><source media="(prefers-color-scheme: dark)" srcset="media/botanical/tea_tree-d.webp"><img src="media/botanical/tea_tree.webp" alt="" width="520" height="464" loading="lazy" decoding="async"></picture></div>
     <div class="wrap">
       <p class="eyebrow">For your everyday</p>
       <h2><span class="nw">毎日の香りに、</span><span class="nw">そっと寄り添う</span></h2>
@@ -167,11 +266,24 @@
   </section>
 
   <footer>
+<div class="bot" aria-hidden="true" style="width:min(210px,28vw);left:-40px;bottom:-30px;--r:-4deg;--d:13s;--o:.6"><picture><source media="(prefers-color-scheme: dark)" srcset="media/botanical/sandalwood-d.webp"><img src="media/botanical/sandalwood.webp" alt="" width="520" height="466" loading="lazy" decoding="async"></picture></div>
+<div class="bot" aria-hidden="true" style="width:min(190px,26vw);right:-30px;bottom:-34px;--r:8deg;--d:11s;--o:.6"><picture><source media="(prefers-color-scheme: dark)" srcset="media/botanical/rose_otto-d.webp"><img src="media/botanical/rose_otto.webp" alt="" width="494" height="520" loading="lazy" decoding="async"></picture></div>
     <div class="wrap">
       <nav><a href="support.html">サポート</a><a href="privacy.html">プライバシーポリシー</a><a href="index.html">トップ</a></nav>
       <p>アロマ成分帳</p>
-      <p class="credit">紹介動画の人物・風景は AI で生成したイメージです。ナレーション：VOICEVOX:もち子(cv 明日葉よもぎ)</p>
+      <p class="credit">紹介動画の人物・風景と、植物の画は、AI で生成したイメージ・イラストです。ナレーション：VOICEVOX:もち子(cv 明日葉よもぎ)</p>
     </div>
   </footer>
+  <script>
+    document.documentElement.classList.add('js');
+    (function () {
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: .15 });
+      els.forEach(function (e) { io.observe(e); });
+    })();
+  </script>
 </body>
 </html>
