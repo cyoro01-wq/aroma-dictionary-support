@@ -3,13 +3,65 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="アロマ成分帳は、精油を「成分」と「安全条件」から引ける辞典アプリです。iPhone・iPad対応。">
-  <meta property="og:title" content="アロマ成分帳 — 香りを知る。暮らしに広がる。">
-  <meta property="og:description" content="精油を「成分」と「安全条件」から引ける辞典アプリ。">
-  <meta property="og:image" content="https://cyoro01-wq.github.io/aroma-dictionary-support/media/poster.jpg">
-  <meta property="og:type" content="website">
+  <title>アロマ成分帳｜精油の成分と安全条件で調べる辞典アプリ（iPhone・iPad）</title>
+  <meta name="description" content="アロマ成分帳は、精油を成分や安全条件（妊娠中・ペットなど）から調べられる、iPhone・iPad向けの辞典アプリです。51種の精油と56の成分、参考文献つき。アカウント登録は不要です。">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+  <meta name="theme-color" content="#fbf6ef">
+  <meta name="apple-itunes-app" content="app-id=6828816249">
+  <link rel="canonical" href="https://cyoro01-wq.github.io/aroma-dictionary-support/app.html">
   <link rel="icon" href="media/icon.png">
-  <title>アロマ成分帳 — 香りを知る。暮らしに広がる。</title>
+  <link rel="apple-touch-icon" href="media/icon.png">
+  <meta property="og:site_name" content="アロマ成分帳">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cyoro01-wq.github.io/aroma-dictionary-support/app.html">
+  <meta property="og:title" content="アロマ成分帳｜精油の成分と安全条件で調べる辞典アプリ">
+  <meta property="og:description" content="精油を成分や安全条件から調べられる、iPhone・iPad向けの辞典アプリ。51種の精油と56の成分、参考文献つき。">
+  <meta property="og:image" content="https://cyoro01-wq.github.io/aroma-dictionary-support/media/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="アロマ成分帳の紹介。ユーカリ・ラベンダー・ローズなどの植物画">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="アロマ成分帳｜精油の成分と安全条件で調べる辞典アプリ">
+  <meta name="twitter:description" content="精油を成分や安全条件から調べられる、iPhone・iPad向けの辞典アプリ。">
+  <meta name="twitter:image" content="https://cyoro01-wq.github.io/aroma-dictionary-support/media/og.jpg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "MobileApplication",
+        "@id": "https://cyoro01-wq.github.io/aroma-dictionary-support/app.html#app",
+        "name": "アロマ成分帳",
+        "alternateName": "Aroma Components",
+        "description": "精油を成分や安全条件（妊娠中・ペットなど）から調べられる辞典アプリ。51種の精油と56の成分、参考文献つき。",
+        "inLanguage": "ja",
+        "operatingSystem": "iOS 17.0以降",
+        "applicationCategory": "ReferenceApplication",
+        "url": "https://cyoro01-wq.github.io/aroma-dictionary-support/app.html",
+        "installUrl": "https://apps.apple.com/jp/app/id6828816249",
+        "downloadUrl": "https://apps.apple.com/jp/app/id6828816249",
+        "image": "https://cyoro01-wq.github.io/aroma-dictionary-support/media/og.jpg",
+        "screenshot": [
+          "https://cyoro01-wq.github.io/aroma-dictionary-support/media/01-oils.jpg",
+          "https://cyoro01-wq.github.io/aroma-dictionary-support/media/03-components.jpg",
+          "https://cyoro01-wq.github.io/aroma-dictionary-support/media/04-safety.jpg"
+        ],
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
+      },
+      {
+        "@type": "VideoObject",
+        "name": "アロマ成分帳の紹介動画",
+        "description": "精油を成分と安全条件から調べられる辞典アプリ「アロマ成分帳」の30秒の紹介動画。",
+        "thumbnailUrl": "https://cyoro01-wq.github.io/aroma-dictionary-support/media/poster.jpg",
+        "contentUrl": "https://cyoro01-wq.github.io/aroma-dictionary-support/media/promo.mp4",
+        "uploadDate": "2026-11-20",
+        "duration": "PT30S",
+        "inLanguage": "ja"
+      }
+    ]
+  }
+  </script>
   <style>
     :root {
       color-scheme: light dark;
@@ -46,6 +98,7 @@
     .lead { font-size: 1.05rem; color: var(--muted); max-width: 30em; }
     .badge { display: inline-block; margin-top: 22px; padding: 10px 20px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); font-size: .92rem; color: var(--muted); box-shadow: var(--shadow); }
     .badge b { color: var(--sage); font-weight: 600; }
+    .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
     .store { display: inline-block; margin-top: 4px; padding: 12px 30px; border-radius: 999px; background: var(--rose); color: #fff; text-decoration: none; font-weight: 600; letter-spacing: .08em; box-shadow: var(--shadow); transition: transform .3s ease, box-shadow .3s ease; }
     .store:hover { transform: translateY(-2px); box-shadow: 0 22px 36px -20px rgba(80, 55, 40, .6); }
     @media (prefers-color-scheme: dark) { .store { color: #2a1d21; } }
@@ -139,7 +192,7 @@
     <div class="wrap">
       <div>
         <div class="brand"><img src="media/icon.png" alt="" width="64" height="64"><span>アロマ成分帳</span></div>
-        <h1><span class="nw">香りを知る。</span><br><span class="nw">暮らしに広がる。</span></h1>
+        <h1><span class="sr-only">アロマ成分帳：</span><span class="nw">香りを知る。</span><br><span class="nw">暮らしに広がる。</span></h1>
         <p class="lead">アロマ成分帳は、精油を「成分」と「安全条件」から引ける辞典アプリです。気になる香りの成り立ちや、使う前に知っておきたい注意を、手のひらで確かめられます。</p>
         <p class="badge"><span class="nw">iPhone・iPad（iOS 17以降）</span> <span class="nw"><b>App Store で配信中</b></span></p>
         <p><a class="store" href="https://apps.apple.com/jp/app/id6828816249">App Store で見る</a></p>
